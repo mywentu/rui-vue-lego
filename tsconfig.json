@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+      "target": "es5",
+      "module": "esnext",
+      "moduleResolution": "node",
+      "jsx": "preserve",
+      "jsxFactory": "h",
+      "allowSyntheticDefaultImports": true,
+      "sourceMap": true,
+      "baseUrl": "./src",
+      "alwaysStrict": true,
+      "allowJs": true,
+      "noUnusedLocals": false,
+      "importHelpers": true,
+      "experimentalDecorators": true,
+      "noImplicitAny": false,
+      "typeRoots": [
+        "./typings",
+        "./node_modules/vue/types",
+        "./node_modules/@types"
+      ],
+      "paths": {
+        "@/*": ["*", "src/*"]
+      },
+      "lib": ["es6", "dom"]
+  },
+  "include":  ["src/**/*.ts", "src/**/*.vue", "typings/**/*.ts", "src/**/*.md"],
+  "exclude": ["./dist", "./static"]
+}
