@@ -4,10 +4,7 @@ const webpack = require('webpack')
 const config = require('../config')
 const merge = require('webpack-merge')
 const path = require('path')
-const fs = require('fs')
-const Mock = require('mockjs')
 const baseWebpackConfig = require('./webpack.base.conf')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
@@ -31,8 +28,7 @@ let devWebpackConfig = merge(baseWebpackConfig,{
     clientLogLevel: 'warning',
     historyApiFallback: {
       rewrites: [
-        { from: /.docs*/, to: path.posix.join(config.dev.assetsPublicPath, 'docs.html') },
-        { from: /.case*/, to: path.posix.join(config.dev.assetsPublicPath, 'case.html') }
+        { from: /.*/, to: path.posix.join(config.dev.assetsPublicPath, 'desktop.html') }
       ],
     },
     hot: true,
@@ -57,33 +53,23 @@ let devWebpackConfig = merge(baseWebpackConfig,{
       'process.env': require('../config/dev.env')
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.
+    new webpack.NamedModulesPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
-    // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
-      filename: 'docs.html',
-      template: 'docs.html',
+      filename: 'desktop.html',
+      template: 'docs/index.html',
       inject: true,
-      chunks: ['docs']
+      chunks: ['desktop']
     }),
     new HtmlWebpackPlugin({
-      filename: 'case.html',
-      template: 'case.html',
+      filename: 'mobile.html',
+      template: 'docs/index.html',
       inject: true,
-      chunks: ['case']
-    }),
-    // copy custom static assets
-    new CopyWebpackPlugin([
-      {
-        from: path.resolve(__dirname, '../static'),
-        to: config.dev.assetsSubDirectory,
-        ignore: ['.*']
-      }
-    ])
+      chunks: ['mobile']
+    })
   ]
 })
 
-// devWebpackConfig = smp.wrap(devWebpackConfig)
 
 module.exports = new Promise((resolve, reject) => {
   portfinder.basePort = process.env.PORT || config.dev.port

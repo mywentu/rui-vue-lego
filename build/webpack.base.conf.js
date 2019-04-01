@@ -32,8 +32,9 @@ function resolve(dir) {
 module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
-    docs: './src/pages/docs.ts',
-    case: './src/pages/case.ts'
+    mobile: './docs/pages/mobile.ts',
+    desktop: './docs/pages/desktop.ts'
+
   },
   output: {
     path: config.build.assetsRoot,
@@ -52,7 +53,11 @@ module.exports = {
   module: {
     rules: [{
         test: /\.tsx?$/,
-        include: resolve('src'),
+        include: [
+          resolve('src'),
+          resolve('docs'),
+          resolve('packages')
+        ],
         exclude: /node_modules/,
         loader: 'happypack/loader?id=ts'
       },
