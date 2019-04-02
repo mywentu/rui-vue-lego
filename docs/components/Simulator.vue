@@ -8,15 +8,19 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import Component from "vue-class-component";
+
+import { Vue, Component, Watch } from 'vue-property-decorator'
 
 @Component
 export default class Simulator extends Vue {
-  get curView() {
+
+  curView: string = '';
+  
+  @Watch('$route')
+  getCurView() {
     const origin = location.origin,
           hash = location.hash.replace('#', '#/demo');
-    return `${origin}/mobile.html/${hash}`;
+    this.curView =  `${origin}/mobile.html/${hash}`;
   }
 }
 </script>

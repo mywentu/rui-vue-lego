@@ -1,6 +1,6 @@
 <template>
   <div class="m-button">
-      我是button
+      我是LoadingDemo
   </div>
 </template>
 
@@ -9,7 +9,7 @@ import Vue from "vue";
 import Component from "vue-class-component";
 
 @Component
-export default class ButtonDemo extends Vue {
+export default class LoadingDemo extends Vue {
 }
 </script>
 
