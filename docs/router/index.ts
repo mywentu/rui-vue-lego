@@ -7,7 +7,10 @@ import docs from  './docs.config';
 Vue.use(Router);
 
 const generateRoute = () => {
-  const routes:RouteConfig[] = [];
+  const routes:RouteConfig[] = [{
+    path: '/',
+    redirect: '/button'
+  }];
   const demoRoutes = Object.keys(demos).map(route => ({
     name: route,
     path: `/demo/${route}`,

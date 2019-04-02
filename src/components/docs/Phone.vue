@@ -1,6 +1,6 @@
 <template>
   <div class="m-phone fill">
-    <iframe :src="curView" class="demo-window" frameborder="0"></iframe>
+    <iframe src="http://localhost:8080/mobile.html/#/demo/button" class="demo-window" frameborder="0"></iframe>
   </div>
 </template>
 
