@@ -1,6 +1,6 @@
 import Vue from 'vue'
-import Toast from './Toast.vue'
-import { whichTransitionEvent } from '@/common/js/utils'
+import Toast from './Toast'
+import { whichTransitionEvent } from '../utils/index'
 export interface ToastOption {
   /** 显示内容 */
   msg:string,

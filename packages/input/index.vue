@@ -86,11 +86,11 @@ export default class Input extends Vue {
   }
 
   inputBlur() {
-    this.$toast({msg: '输入框失去焦点'})
+    // this.$toast({msg: '输入框失去焦点'})
   }
 
   inputFocus() {
-    this.$toast({msg: '输入框获得焦点'})
+    // this.$toast({msg: '输入框获得焦点'})
   }
   
 }
