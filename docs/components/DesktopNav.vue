@@ -4,8 +4,8 @@
       <li class="dxy-tree-content"><a href="#elements">公用组件</a></li>
       <li class="dxy-tree-children">
         <ul class="dxy-tree-node">
-          <li class="dxy-tree-content">
-            <a href="#elements_text">文本</a>
+          <li class="dxy-tree-content" v-for="(route, index) in routes" :key="index">
+            <router-link :to="{ name: route.name }">{{ route.name }}</router-link>
           </li>
         </ul>
       </li>
@@ -17,8 +17,13 @@
 import Vue from "vue";
 import Component from "vue-class-component";
 
+import { docRoutes } from '../router'
+
 @Component
 export default class DesktopNav extends Vue {
+  get routes() {
+    return docRoutes
+  }
 }
 </script>
 

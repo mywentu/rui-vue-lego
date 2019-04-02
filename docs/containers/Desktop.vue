@@ -38,7 +38,6 @@ export default class Desktop extends Vue {
   .content {
     display: flex;
     flex-wrap: nowrap;
-    overflow: scroll;
     flex-direction: row;
     margin-left: 220px;
     padding: 0 40px;

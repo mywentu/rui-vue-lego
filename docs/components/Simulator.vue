@@ -1,6 +1,9 @@
 <template>
   <div class="m-simulator">
-    <iframe class="demo-window" src="http://localhost:8080/mobile.html/#/demo/button" frameborder="0"></iframe>
+    <iframe
+      :src="curView"
+      class="demo-window"
+      frameborder="0"></iframe>
   </div>
 </template>
 
@@ -10,6 +13,11 @@ import Component from "vue-class-component";
 
 @Component
 export default class Simulator extends Vue {
+  get curView() {
+    const origin = location.origin,
+          hash = location.hash.replace('#', '#/demo');
+    return `${origin}/mobile.html/${hash}`;
+  }
 }
 </script>
 

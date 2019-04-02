@@ -6,30 +6,24 @@ import docs from  './docs.config';
 
 Vue.use(Router);
 
-const generateRoute = () => {
-  const routes:RouteConfig[] = [{
+  let routes:RouteConfig[] = [{
     path: '/',
     redirect: '/button'
   }];
-  const demoRoutes = Object.keys(demos).map(route => ({
-    name: route,
+  
+  export const demoRoutes = Object.keys(demos).map(route => ({
+    name: `demo-${route}`,
     path: `/demo/${route}`,
     component: demos[route]
   }));
 
-  const docRoutes = Object.keys(docs).map(route => ({
+  export const docRoutes = Object.keys(docs).map(route => ({
     name: route,
     path: `/${route}`,
     component: docs[route]
   }));
 
-  return routes.concat(demoRoutes, docRoutes);
-}
-
-const routes = generateRoute();
-
-
-console.log(routes, 'routesroutesroutes')
+  routes = routes.concat(demoRoutes, docRoutes);
 
 export default new Router({
   routes: routes
