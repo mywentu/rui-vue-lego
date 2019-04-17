@@ -34,19 +34,3 @@ export default {
   }
 }
 </script>
-<style scoped lang="scss" scoped>
-.m-toast {
-  transition: opacity .4s;
-  font-size: .15rem;
-  .icon-box {
-    margin-bottom: .07rem;
-    .icon {
-      width: .5rem;
-      height: .5rem;
-    }
-  }
-}
- .toast-enter, .toast-leave-active {
-  opacity: 0;
-}
-</style>

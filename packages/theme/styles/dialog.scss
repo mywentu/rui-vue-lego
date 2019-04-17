@@ -1,0 +1,71 @@
+.m-dialog {
+  .rui-dialog {
+    padding-top: 0;
+    .bd {
+      padding: 0.2rem;
+      min-height: auto;
+    }
+    .title {
+      font-weight: normal;
+      padding-top: .15rem;
+    }
+    .rui-btn-dialog {
+      color: #05D380;
+      border-radius: 0;
+      background-color: #fff;
+      &:last-child {
+        &::after {
+          content:"";
+          width: 200%;
+          height: 200%;
+          box-sizing: border-box;
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          border-left:1px solid #D8D9DC;
+          transform: scale(0.5);
+          transform-origin:0 0;
+        }
+      }
+    }
+    .ft {
+      box-shadow: none;
+      position: relative;
+      &:before {
+        content: "";
+        pointer-events: none;
+        box-sizing: border-box;
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        left: 0;
+        top: -.01rem;
+        border-top: 1px solid #D8D9DC;
+        transform: scale(0.5);
+        transform-origin: 0 0;
+      }
+    }
+  }
+  .icon-wrap {
+    margin-bottom: .1rem;
+    .circle-bg{
+      width: .44rem;
+      height: .44rem;
+      line-height: .44rem;
+      background-color: #fa5d5d;
+      border-radius: 50%;
+      display: inline-block;
+      align-items: center;
+      justify-content: center;
+      margin: .15rem auto 0 auto;
+      color: #fff;
+      font-size: .2rem;
+    }
+    .sucess{
+      background-color: #42C905;
+      color: #fff;
+      font-size: .18rem;
+    }
+  } 
+}

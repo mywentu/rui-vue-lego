@@ -3,7 +3,7 @@ $base: (
   font-path: "../font/"  // 自定义指定scss字体位置
 );
 
-@import "~ruicss/sass/index.scss";
+@import "../../../node_modules/ruicss/sass/index.scss";
 @include root-scroll(true);
 
 /**

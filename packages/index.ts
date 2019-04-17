@@ -1,20 +1,35 @@
 
 import Button from './button/index.vue';
-const components = [Button];
+import Dialog from './dialog/index.vue';
+import Input from './input/index.vue';
+import Loading from './loading/Loading.vue';
 
-const install = function(vue) {
-  /* istanbul ignore if */
+
+import $loading from './loading/index';
+
+
+const components = [
+  Button,
+  Dialog,
+  Input,
+  Loading
+];
+
+const install = function(Vue) {
   if (install['installed']) return;
-  /*eslint-disable*/
   components.map((component) => {
-    vue.component(component.name, component);
+    Vue.component(component.name, component);
   });
+  Vue.prototype.$loading = $loading;
 };
+
 if (typeof window !== 'undefined' && window['Vue']) {
     install(window['Vue']);
 }
 export default {
     install,
-    Button
+    Button,
+    Dialog,
+    Input,
+    Loading
 };
-export { Button };

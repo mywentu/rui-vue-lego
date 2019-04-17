@@ -18,14 +18,3 @@ export default class VueButton extends Vue {
   
 }
 </script>
-<style scoped lang="scss" scoped>
-.m-vueBtn {
-  position: relative;
-  padding: 0 .3rem 0 .12rem;
-  background: #fff;
-  border: 1px solid #ebedf0;
-  border-radius: .05rem;
-  color: #666;
-  font-size: .14rem;
-}
-</style>
