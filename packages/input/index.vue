@@ -1,123 +1,158 @@
 <template>
-  <div class="m-input">
-    <header class="rui-header rui-header-case">
-      <span class="back" @click="back">
-        <i class="rui-ico icon-back"></i>
-      </span>
-      <span class="title">
-        Input
-      </span>
-    </header>
-    <div class="bd">
-      <section class="input-demo">
-        <h2 class="input-demo-title">文字输入框</h2>
-        <vueInput clearable type="text" :blurEvent="inputBlur" v-model="inputValue"/>
-      </section>
-      <section class="input-demo">
-        <h2 class="input-demo-title">密码输入框</h2>
-        <vueInput clearable type="password" :focusEvent="inputFocus" v-model="pwdValue"/>
-      </section>
-      <section class="input-demo">
-        <h2 class="input-demo-title">文本输入框</h2>
-        <vueInput type="textarea" autosize rows='2' v-model="textValue"/>
-      </section>
-      <section class="input-demo">
-        <h2 class="input-demo-title">手机号输入框</h2>
-        <vueInput type="tel" clearable v-model="phoneValue" maxlength=11 />
-      </section>
-      <section class="input-demo">
-        <h2 class="input-demo-title">数字输入框</h2>
-        <vueInput type="number" clearable v-model="numberValue"/>
-      </section>
-      <section class="input-demo">
-        <h2 class="input-demo-title">年/月/日输入框</h2>
-        <vueInput type="date" clearable v-model="dateValue"/>
-      </section>
-      <section class="input-demo">
-        <h2 class="input-demo-title">输入框尺寸</h2>
-        <div class="input-group">
-          <vueInput type="text" clearable size="large" v-model="largeValue"/>
-          <vueInput type="text" clearable size="medium" v-model="mediumValue"/>
-          <vueInput type="text" clearable size="small" v-model="smallValue"/>
-        </div>
-      </section>
-      <section class="input-demo">
-        <h2 class="input-demo-title">输入框内容对齐方式</h2>
-        <div class="input-group">
-          <vueInput type="text" clearable inputAlign="left" placeholder="左对齐" v-model="mediumValue"/>
-          <vueInput type="text" clearable holder="右对齐" inputAlign="right" v-model="smallValue"/>
-        </div>
-      </section>
-      <section class="input-demo">
-        <h2 class="input-demo-title">输入框添加类名</h2>
-        <div class="input-group">
-          <vueInput type="text" clearable inputClass="input-demo-class" v-model="mediumValue"/>
-        </div>
-      </section>
+  <div 
+    :class="['m-vueInput', 
+    size ? 'el-input-' + size : '',
+    inputAlign ? 'el-input-align-' + inputAlign : '',
+    {'bd-noclear' : !showClear}, inputClass]">
+      <main class="vueInput-bd" ref="main">
+        <textarea
+          :rows="rows"
+          ref="textarea" 
+          v-if="type === 'textarea'"
+          :class="['input-default']"
+          :placeholder="placeholder" 
+          :maxlength="maxlength" 
+          :readonly="readonly"
+          :disabled="disabled"
+          v-model="inputValue"
+          @change="changeEvent"
+          @input="inputEvent"
+          @focus="focusEvent"
+          @blur="blurEvent">
+        </textarea>
 
-      <section class="input-demo">
-        <h2 class="input-demo-title">手机号输入框</h2>
-        <div class="input-group">
-          <vueInput type="mobile" clearable inputClass="input-demo-class" v-model="mediumValue"/>
-        </div>
-      </section>
-    </div>
+        <input 
+          ref="input"
+          v-else
+          :type="type" 
+          :class="['input-default']"
+          :placeholder="placeholder"
+          :maxlength="maxlength" 
+          :readonly="readonly"
+          :disabled="disabled"
+          v-model="inputValue"
+          @change="changeEvent"
+          @input="inputEvent"
+          @focus="focusEvent"
+          @blur="blurEvent">
+      </main>
+      <i class="icon icon-delete" v-if="showClear" @click="clear"></i>
   </div>
 </template>
-
 <script lang="ts">
-import Vue from "vue";
-import Component from "vue-class-component";
+import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
 
 @Component
-export default class Input extends Vue {
-  inputValue: string = ''
-  pwdValue: string = ''
-  textValue: string = ''
-  phoneValue: string = ''
-  numberValue: number = 0
-  dateValue: string = ''
+export default class VueInput extends Vue {
+  @Prop({type: [String, Number], required: true}) value: [String, Number]
+  @Prop({type: [String, Number], required: false}) maxlength: [String, Number]
 
-  largeValue: string = ''
-  mediumValue: string = ''
-  smallValue: string = ''
-  back() {
-    this.$router.push({name: 'overView'})
-  }
-
-  inputBlur() {
-    // this.$toast({msg: '输入框失去焦点'})
-  }
-
-  inputFocus() {
-    // this.$toast({msg: '输入框获得焦点'})
-  }
+  @Prop({type: String, default: '1', required: false}) rows: String
+  @Prop({type: String, default: 'text', required: false}) type: String
+  @Prop({type: String, default: 'medium', required: false}) size: String
+  @Prop({type: String, default: 'left', required: false}) inputAlign: String
+  @Prop({type: String, default: '请输入', required: false}) placeholder: String
   
+  @Prop({type: Boolean, default: false, required: false}) readonly: Boolean
+  @Prop({type: Boolean, default: false, required: false}) disabled: Boolean
+  @Prop({type: Boolean, default: false, required: false}) clearable: Boolean
+  @Prop({type: Boolean, default: false, required: false}) autosize: Boolean
+
+  @Prop({type: String, required: false}) inputClass: String
+
+  @Prop({type: Function, default: () => {}, required: false}) inputEvent: String
+  @Prop({type: Function, default: () => {}, required: false}) changeEvent: String
+  @Prop({type: Function, default: () => {}, required: false}) focusEvent: String
+  @Prop({type: Function, default: () => {}, required: false}) blurEvent: String
+
+  inputValue = this.value 
+  textareaStyle = {}
+
+  @Watch('inputValue')
+  autoHeight() {
+    if (this.type !== 'textarea') return;
+    const { textarea } = this.$refs;
+    let scrollHeight = textarea['scrollHeight']
+    textarea['style'].height = scrollHeight + 'px';
+  }
+
+  get showClear() {
+    return this.clearable && 
+      !!this.inputValue &&
+      this.type !== 'textarea' && 
+      !this.disabled && 
+      !this.readonly
+  }
+
+  clear() {
+    if (this.disabled || this.readonly) return;
+    this.inputValue = null
+  }
 }
 </script>
-
-<style lang="scss" scoped>
-.m-input {
-  .input-demo-title {
-    margin: 0;
-    font-weight: 400;
+<style scoped lang="scss" scoped>
+.m-vueInput {
+  position: relative;
+  padding: 0 .3rem 0 .12rem;
+  background: #fff;
+  border: 1px solid #ebedf0;
+  border-radius: .05rem;
+  color: #666;
+  font-size: .14rem;
+  &.bd-noclear {
+    padding: 0 .12rem 0 .12rem;
+  }
+  &.el-input-large {
+    font-size: .16rem;
+    .vueInput-bd {
+      padding: .14rem 0;
+    }
+  }
+  &.el-input-medium {
     font-size: .14rem;
-    color: rgba(69, 90, 100, .6);
-    padding: .2rem 0 .08rem;
-  }
-  .input-demo {
-    padding: .05rem .15rem;
-    background: #fafafa;
-  }
-  .input-group {
-    .m-vueInput {
-      margin-top: .05rem;
+    .vueInput-bd {
+      padding: .12rem 0;
     }
-    .input-demo-class {
-      color: #06be06;
-      border-color: rgb(6, 190, 6);
+  }
+  &.el-input-small {
+    font-size: .12rem;
+    .vueInput-bd {
+      padding: .1rem 0;
     }
+  }
+  &.el-input-align-left {
+    text-align: left;
+  }
+  &.el-input-align-right {
+    text-align: right;
+  }
+  .vueInput-bd {
+    width: 100%;
+    padding: .12rem 0;
+    color: inherit;
+    font-size: inherit;
+    background: inherit;
+    text-align: inherit;
+    .input-default {
+      width: 100%;
+      color: inherit;
+      font-size: inherit;
+      background: inherit;
+      line-height: initial;
+      text-align: inherit;
+      resize: none;
+      border: 0;
+      outline: 0;
+    }
+  }
+  .icon-delete {
+    width: .15rem;
+    height: .15rem;
+    position: absolute;
+    top: 34%;
+    right: .12rem;
+    background: url(../../../assets/ico-delete.png) no-repeat;
+    background-size: 100%;
   }
 }
 </style>
-

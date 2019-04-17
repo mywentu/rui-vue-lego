@@ -15,8 +15,19 @@ const smp = new SpeedMeasurePlugin();
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
-let devWebpackConfig = merge(baseWebpackConfig,{
+let devWebpackConfig = merge(baseWebpackConfig, {
   mode: 'development',
+  entry: {
+    mobile: './docs/pages/mobile.ts',
+    desktop: './docs/pages/desktop.ts'
+  },
+  output: {
+    path: config.build.assetsRoot,
+    filename: '[name].js',
+    publicPath: process.env.NODE_ENV === 'production'
+      ? config.build.assetsPublicPath
+      : config.dev.assetsPublicPath
+  },
   module: {
     rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true })
   },

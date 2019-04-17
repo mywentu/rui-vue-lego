@@ -48,14 +48,14 @@ module.exports = {
 
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
-    assetsSubDirectory: proEnv.OUT_PATH,
+    assetsSubDirectory: '',
     assetsPublicPath: `//static.rong360.com/tfstatic/${proEnv.PROJECT_NAME}/`,
 
     /**
      * Source Maps
      */
 
-    productionSourceMap: true,
+    productionSourceMap: false,
     // https://webpack.js.org/configuration/devtool/#production
     devtool: '#source-map',
 

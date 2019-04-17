@@ -25,24 +25,12 @@ threadLoader.warmup({}, [
   'vue-style-loader'
 ])
 
-function resolve(dir) {
+function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
 
 module.exports = {
   context: path.resolve(__dirname, '../'),
-  entry: {
-    mobile: './docs/pages/mobile.ts',
-    desktop: './docs/pages/desktop.ts'
-
-  },
-  output: {
-    path: config.build.assetsRoot,
-    filename: '[name].js',
-    publicPath: process.env.NODE_ENV === 'production' ?
-      config.build.assetsPublicPath :
-      config.dev.assetsPublicPath
-  },
   resolve: {
     extensions: ['.ts', '.js', '.vue', '.json'],
     alias: {
@@ -52,87 +40,87 @@ module.exports = {
   },
   module: {
     rules: [{
-        test: /\.tsx?$/,
-        include: [
-          resolve('src'),
-          resolve('docs'),
-          resolve('packages')
-        ],
-        exclude: /node_modules/,
-        loader: 'happypack/loader?id=ts'
-      },
-      {
-        test: /\.vue$/,
-        use: [{
-            loader: 'thread-loader',
-            options: {
-              workers: happyThreadPool.size
-            }
-          },
-          {
-            loader: 'vue-loader',
-            options: vueLoaderConfig
-          }
-        ]
-      },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: [{
-          loader: 'thread-loader',
-          options: {
-            workers: happyThreadPool.size
-          }
-        }],
-        include: [resolve('src'), resolve('node_modules/webpack-dev-server/client')]
-      },
-      {
-        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        loader: 'url-loader',
+      test: /\.tsx?$/,
+      include: [
+        resolve('src'),
+        resolve('docs'),
+        resolve('packages')
+      ],
+      exclude: /node_modules/,
+      loader: 'happypack/loader?id=ts'
+    },
+    {
+      test: /\.vue$/,
+      use: [{
+        loader: 'thread-loader',
         options: {
-          limit: 10000,
-          name: utils.assetsPath('img/[name].[hash:7].[ext]')
+          workers: happyThreadPool.size
         }
       },
       {
-        test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
-        loader: 'url-loader',
-        options: {
-          limit: 10000,
-          name: utils.assetsPath('media/[name].[hash:7].[ext]')
-        }
-      },
-      {
-        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-        loader: 'url-loader',
-        options: {
-          limit: 10000,
-          name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
-        }
-      },
-      {
-        test: /\.md$/,
-        use: [{
-            loader: 'vue-loader',
-            options: vueLoaderConfig
-          },
-          {
-            loader: 'vue-markdown-loader/lib/markdown-compiler',
-            options: {
-              raw: true,
-              preprocess: function (MarkdownIt, Source) {
-                MarkdownIt.renderer.rules.table_open = function () {
-                  return '<div class="table-container"><table class="table">';
-                };
-                MarkdownIt.renderer.rules.table_close = function () {
-                  return '</table></div>';
-                };
-                return Source;
-              }
-            }
-          }
-        ]
+        loader: 'vue-loader',
+        options: vueLoaderConfig
       }
+      ]
+    },
+    {
+      test: /\.js$/,
+      exclude: /node_modules/,
+      use: [{
+        loader: 'thread-loader',
+        options: {
+          workers: happyThreadPool.size
+        }
+      }],
+      include: [resolve('src'), resolve('node_modules/webpack-dev-server/client')]
+    },
+    {
+      test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+      loader: 'url-loader',
+      options: {
+        limit: 10000,
+        name: utils.assetsPath('img/[name].[hash:7].[ext]')
+      }
+    },
+    {
+      test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+      loader: 'url-loader',
+      options: {
+        limit: 10000,
+        name: utils.assetsPath('media/[name].[hash:7].[ext]')
+      }
+    },
+    {
+      test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+      loader: 'url-loader',
+      options: {
+        limit: 10000,
+        name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
+      }
+    },
+    {
+      test: /\.md$/,
+      use: [{
+        loader: 'vue-loader',
+        options: vueLoaderConfig
+      },
+      {
+        loader: 'vue-markdown-loader/lib/markdown-compiler',
+        options: {
+          raw: true,
+          preprocess: function (MarkdownIt, Source) {
+            MarkdownIt.renderer.rules.table_open = function () {
+              return '<div class="table-container"><table class="table">'
+            }
+            MarkdownIt.renderer.rules.table_close = function () {
+              return '</table></div>'
+            }
+            return Source
+          }
+        }
+      }
+      ]
+    }
     ]
   },
   plugins: [
