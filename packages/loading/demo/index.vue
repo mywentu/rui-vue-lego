@@ -1,14 +1,20 @@
 <template>
   <div class="m-button">
-      我是LoadingDemo
+    <Loading visible />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
 import Component from "vue-class-component";
+import Loading from '../Loading.vue';
 
-@Component
+
+@Component({
+  components: {
+    Loading: Loading
+  }
+})
 export default class LoadingDemo extends Vue {
 }
 </script>

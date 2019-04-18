@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Toast from './Toast'
+import Toast from './Toast.vue'
 import { whichTransitionEvent } from '../utils/index'
 export interface ToastOption {
   /** 显示内容 */

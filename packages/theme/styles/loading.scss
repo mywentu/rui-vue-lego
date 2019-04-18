@@ -1,3 +1,17 @@
-.tips{
-  padding-top: .07rem
+@include rui-loading(
+    $name : "common",
+    $ico-color: rgba(255, 255, 255, .9),
+    $color: #fff,
+    $mask-bgcolor: transparent,
+    $bgcolor:rgba(0, 0, 0, .3)
+){
+    .inner {
+        padding: .16rem .25rem;
+        > .rui-ico::before {
+            font-size: .3rem;
+        }
+    }
+    .tips{
+      padding-top: .07rem
+    }
 }

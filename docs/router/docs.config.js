@@ -6,5 +6,5 @@ export default {
   loading: () => import('../../packages/loading/readme.md'),
   numberKeyboard: () => import('../../packages/number-keyboard/readme.md'),
   popup: () => import('../../packages/popup/readme.md'),
-
+  toast: () => import('../../packages/toast/readme.md'),
 }

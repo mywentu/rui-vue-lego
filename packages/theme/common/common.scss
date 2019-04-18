@@ -1,6 +1,6 @@
 @charset "utf-8";
 $base: (
-  font-path: "../font/"  // 自定义指定scss字体位置
+  font-path: "./font/"  // 自定义指定scss字体位置
 );
 
 @import "../../../node_modules/ruicss/sass/index.scss";

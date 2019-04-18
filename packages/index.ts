@@ -5,6 +5,7 @@ import Input from './input/index.vue';
 import Loading from './loading/Loading.vue';
 
 
+import $toast from './loading/index';
 import $loading from './loading/index';
 
 
@@ -20,6 +21,7 @@ const install = function(Vue) {
   components.map((component) => {
     Vue.component(component.name, component);
   });
+  Vue.prototype.$toast = $toast;
   Vue.prototype.$loading = $loading;
 };
 
