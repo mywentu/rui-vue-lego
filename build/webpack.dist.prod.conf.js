@@ -29,7 +29,8 @@ const webpackConfig = merge(baseWebpackConfig, {
       commonjs: 'vue',
       commonjs2: 'vue',
       amd: 'vue'
-    }
+    },
+    'vue-class-component': 'vueClassComponent'
   },
   module: {
     rules: utils.styleLoaders({
