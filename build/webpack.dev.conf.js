@@ -9,8 +9,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 
-const SpeedMeasurePlugin = require("speed-measure-webpack-plugin"); // 打包速度分析
-const smp = new SpeedMeasurePlugin();
 
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
@@ -31,10 +29,7 @@ let devWebpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true })
   },
-  // cheap-module-eval-source-map is faster for development
   devtool: config.dev.devtool,
-
-  // these devServer options should be customized in /config/index.js
   devServer: {
     clientLogLevel: 'warning',
     historyApiFallback: {
@@ -44,7 +39,7 @@ let devWebpackConfig = merge(baseWebpackConfig, {
     },
     hot: true,
     disableHostCheck: true,
-    contentBase: false, // since we use CopyWebpackPlugin.
+    contentBase: false,
     compress: true,
     host: HOST || config.dev.host,
     port: PORT || config.dev.port,
@@ -54,7 +49,7 @@ let devWebpackConfig = merge(baseWebpackConfig, {
       : false,
     publicPath: config.dev.assetsPublicPath,
     proxy: config.dev.proxyTable,
-    quiet: true, // necessary for FriendlyErrorsPlugin
+    quiet: true,
     watchOptions: {
       poll: config.dev.poll
     }
@@ -88,12 +83,8 @@ module.exports = new Promise((resolve, reject) => {
     if (err) {
       reject(err)
     } else {
-      // publish the new Port, necessary for e2e tests
       process.env.PORT = port
-      // add port to devServer config
       devWebpackConfig.devServer.port = port
-
-      // Add FriendlyErrorsPlugin
       devWebpackConfig.plugins.push(new FriendlyErrorsPlugin({
         compilationSuccessInfo: {
           messages: [`Your application is running here: http://${devWebpackConfig.devServer.host}:${port}`],

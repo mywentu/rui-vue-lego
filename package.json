@@ -18,24 +18,19 @@
     "dist_build": "node build/build.js dist_build"
   },
   "dependencies": {
-    "axios": "^0.18.0",
     "better-picker": "^1.1.3",
-    "element-dataset": "^2.2.6",
-    "es6-promise": "^4.2.4",
     "gulp": "^3.9.1",
     "gulp-base64": "^0.1.3",
     "gulp-minify-css": "^1.2.4",
     "gulp-rename": "^1.4.0",
     "gulp-ruby-sass": "^4.0.0",
     "gulp-sass": "^4.0.2",
-    "number-precision": "^1.2.0",
     "ruicss": "^1.1.5",
     "sass": "^1.18.0",
     "vue": "^2.5.2",
     "vue-class-component": "^6.0.0",
     "vue-property-decorator": "^7.0.0",
     "vue-router": "^3.0.1",
-    "vuex": "^3.0.1",
     "vuex-class": "^0.3.1"
   },
   "devDependencies": {
@@ -106,7 +101,6 @@
     "typescript": "^2.9.2",
     "uglifyjs-webpack-plugin": "^1.1.1",
     "url-loader": "^0.5.8",
-    "vue-easytable": "^1.7.1",
     "vue-jest": "^1.0.2",
     "vue-loader": "^15.4.2",
     "vue-markdown-loader": "^2.4.1",

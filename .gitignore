@@ -15,7 +15,5 @@ selenium-debug.log
 *.njsproj
 *.sln
 
-release.js
-staticPath.json
 
 .cache-loader
