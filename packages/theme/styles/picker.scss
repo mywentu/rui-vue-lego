@@ -1,0 +1,14 @@
+.picker {
+  z-index: $picker-comfirm-zIndex;
+  .picker-panel .picker-choose {
+    .cancel {
+      color: $picker-cancel-color !important;
+    }
+    .confirm {
+      color: $picker-comfirm-color !important;
+    }
+	}
+	.picker-content li{
+		font-size: $picker-comfirm-font-size;
+	}
+}

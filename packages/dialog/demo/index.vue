@@ -1,5 +1,5 @@
 <template>
-  <div class="m-dialog">
+  <div class="m-lego-dialog">
     <Dialog 
       :okText="alterConfig.okText"
       :showDialog="alterConfig.visble"

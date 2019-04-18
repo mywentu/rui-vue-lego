@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "better-picker": "^1.1.3",
     "element-dataset": "^2.2.6",
     "es6-promise": "^4.2.4",
     "gulp": "^3.9.1",

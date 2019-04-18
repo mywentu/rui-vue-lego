@@ -13,9 +13,9 @@ gulp.task('sass', function () {
     .pipe(gulp.dest('../dist/styles'));
 });
 
-gulp.task('fonts', function () {
-  gulp.src('../packages/theme/font/*.*')
-      .pipe(gulp.dest('../dist/font'));
-});
+// gulp.task('fonts', function () {
+//   gulp.src('../packages/theme/font/*.*')
+//       .pipe(gulp.dest('../dist/font'));
+// });
 
-gulp.task('default', ['sass', 'fonts']);
+gulp.task('default', ['sass']);
