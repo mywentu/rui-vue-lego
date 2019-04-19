@@ -5,22 +5,24 @@
   "author": "Cindy <zhubaiying@rong360.com>",
   "private": false,
   "main": "dist/lego.js",
+  "typings": "typings/index.d.ts",
   "scripts": {
     "dev": "webpack-dev-server --inline --host 0.0.0.0 --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
-    "build": "node build/build.js build",
+    "build": "npm run dist_build && npm run dist_style",
     "dist_style": "gulp --gulpfile build/build-style.js",
-    "dist_build": "node build/build.js dist_build"
+    "dist_build": "node build/build.js dist_build",
+    "dist_example": "node build/build.js build"
   },
   "dependencies": {
     "better-picker": "^1.1.3",
     "ruicss": "^1.1.5",
     "vue": "^2.5.2",
     "vue-class-component": "^6.0.0",
-    "vue-property-decorator": "^7.0.0",
-    "vue-router": "^3.0.1"
+    "vue-property-decorator": "^7.0.0"
   },
   "devDependencies": {
+    "vue-router": "^3.0.1",
     "@types/webpack-env": "^1.13.6",
     "add-asset-html-webpack-plugin": "^3.0.1",
     "autoprefixer": "^7.1.2",
@@ -103,8 +105,7 @@
     "gulp-base64": "^0.1.3",
     "gulp-minify-css": "^1.2.4",
     "gulp-rename": "^1.4.0",
-    "gulp-ruby-sass": "^4.0.0",
-    "gulp-sass": "^4.0.2",
+    "gulp-ruby-sass": "^4.0.0"
   },
   "engines": {
     "node": ">= 6.0.0",

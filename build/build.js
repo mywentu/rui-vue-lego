@@ -8,7 +8,7 @@ var path = require('path')
 var chalk = require('chalk')
 var webpack = require('webpack')
 var config = require('../config')
-var webpackConfig = process.argv[2] === 'build' ? require('./webpack.prod.conf') : require('./webpack.dist.prod.conf')
+var webpackConfig = process.argv[2] === 'build' ? require('./webpack.prod.conf') : require('./webpack.dist.conf')
 var spinner = ora('building for production...')
 spinner.start()
 

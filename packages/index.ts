@@ -1,18 +1,13 @@
 
-import Button from './button/index.vue';
 import Dialog from './dialog/index.vue';
-import Input from './input/index.vue';
 import Loading from './loading/Loading.vue';
-
 
 import $toast from './loading/index';
 import $loading from './loading/index';
 
 
 const components = [
-  Button,
   Dialog,
-  Input,
   Loading
 ];
 
@@ -30,8 +25,6 @@ if (typeof window !== 'undefined' && window['Vue']) {
 }
 export default {
     install,
-    Button,
     Dialog,
-    Input,
     Loading
 };

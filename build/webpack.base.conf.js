@@ -2,17 +2,12 @@
 const os = require('os')
 const path = require('path')
 const utils = require('./utils')
-const config = require('../config')
-const {
-  VueLoaderPlugin
-} = require('vue-loader')
-// const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const vueLoaderConfig = require('./vue-loader.conf')
-// const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin')
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
-const threadLoader = require('thread-loader')
-
 const HappyPack = require('happypack')
+const threadLoader = require('thread-loader')
+const { VueLoaderPlugin } = require('vue-loader')
+const vueLoaderConfig = require('./vue-loader.conf')
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
+
 const happyThreadPool = HappyPack.ThreadPool({
   size: os.cpus().length
 })
@@ -34,7 +29,6 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.js', '.vue', '.json'],
     alias: {
-      '@': resolve('src'),
       'vue$': 'vue/dist/vue.esm.js'
     }
   },
@@ -42,7 +36,6 @@ module.exports = {
     rules: [{
       test: /\.tsx?$/,
       include: [
-        resolve('src'),
         resolve('example'),
         resolve('packages')
       ],
@@ -143,11 +136,7 @@ module.exports = {
     new ForkTsCheckerWebpackPlugin()
   ],
   node: {
-    // prevent webpack from injecting useless setImmediate polyfill because Vue
-    // source contains it (although only uses it if it's native).
     setImmediate: false,
-    // prevent webpack from injecting mocks to Node native modules
-    // that does not make sense for the client
     dgram: 'empty',
     fs: 'empty',
     net: 'empty',

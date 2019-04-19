@@ -28,7 +28,6 @@
     "example/**/*.ts",
     "example/**/*.vue",
     "typings/**/*.ts",
-    "example/**/*.md",
     "packages/**/*.ts",
     "packages/**/*.vue",
     "packages/**/*.md"
