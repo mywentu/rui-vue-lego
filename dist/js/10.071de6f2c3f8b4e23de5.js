@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[10],{G3eZ:function(e,t,n){"use strict";n.r(t);var s=n("F8we"),i=Object(s.a)({},function(){return this.$createElement,this._self._c,this._m(0)},[function(){var e=this.$createElement,t=this._self._c||e;return t("section",[t("h5",[this._v("popup")])])}],!1,null,null,null);t.default=i.exports}}]);
