@@ -1,7 +1,7 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass');
 const base64 = require('gulp-base64');
-const minifyCss = require('gulp-minify-css');                     //- 压缩CSS为一行；
+const minifyCss = require('gulp-minify-css');
 
 
 gulp.task('sass', function () {
@@ -12,7 +12,7 @@ gulp.task('sass', function () {
       maxImageSize: 8*1024
     }))
     .pipe(minifyCss())
-    .pipe(gulp.dest('../dist/styles'));
+    .pipe(gulp.dest('../dist'));
 });
 
 gulp.task('fonts', function () {
