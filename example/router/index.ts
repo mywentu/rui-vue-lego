@@ -8,7 +8,7 @@ Vue.use(Router);
 
   let routes:RouteConfig[] = [{
     path: '/',
-    redirect: '/button'
+    redirect: '/dialog'
   }];
   
   export const demoRoutes = Object.keys(demos).map(route => ({

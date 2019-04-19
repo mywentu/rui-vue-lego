@@ -12,7 +12,7 @@
 <script lang="ts">
 import Vue from "vue";
 import Component from "vue-class-component";
-import Dialog from '../index.vue';
+import Dialog from '../../packages/dialog/index.vue';
 
 @Component({
   components: {

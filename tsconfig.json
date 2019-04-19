@@ -7,7 +7,7 @@
       "jsxFactory": "h",
       "allowSyntheticDefaultImports": true,
       "sourceMap": true,
-      "baseUrl": "./docs",
+      "baseUrl": "./example",
       "alwaysStrict": true,
       "allowJs": true,
       "noUnusedLocals": false,
@@ -20,15 +20,15 @@
         "./node_modules/@types"
       ],
       "paths": {
-        "@/*": ["*", "docs/*"]
+        "@/*": ["*", "example/*"]
       },
       "lib": ["es6", "dom"]
   },
   "include":  [
-    "docs/**/*.ts",
-    "docs/**/*.vue",
+    "example/**/*.ts",
+    "example/**/*.vue",
     "typings/**/*.ts",
-    "docs/**/*.md",
+    "example/**/*.md",
     "packages/**/*.ts",
     "packages/**/*.vue",
     "packages/**/*.md"

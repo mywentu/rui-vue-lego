@@ -43,7 +43,7 @@ module.exports = {
       test: /\.tsx?$/,
       include: [
         resolve('src'),
-        resolve('docs'),
+        resolve('example'),
         resolve('packages')
       ],
       exclude: /node_modules/,

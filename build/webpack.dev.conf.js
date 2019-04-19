@@ -16,8 +16,8 @@ const PORT = process.env.PORT && Number(process.env.PORT)
 let devWebpackConfig = merge(baseWebpackConfig, {
   mode: 'development',
   entry: {
-    mobile: './docs/pages/mobile.ts',
-    desktop: './docs/pages/desktop.ts'
+    mobile: './example/pages/mobile.ts',
+    desktop: './example/pages/desktop.ts'
   },
   output: {
     path: config.build.assetsRoot,
@@ -63,13 +63,13 @@ let devWebpackConfig = merge(baseWebpackConfig, {
     new webpack.NoEmitOnErrorsPlugin(),
     new HtmlWebpackPlugin({
       filename: 'desktop.html',
-      template: 'docs/index.html',
+      template: 'example/index.html',
       inject: true,
       chunks: ['desktop']
     }),
     new HtmlWebpackPlugin({
       filename: 'mobile.html',
-      template: 'docs/index.html',
+      template: 'example/index.html',
       inject: true,
       chunks: ['mobile']
     })
