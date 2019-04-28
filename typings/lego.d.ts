@@ -31,4 +31,17 @@ declare module "vue/types/vue" {
   }
 }
 
-declare module "rui-vue-lego"
+declare module "rui-vue-lego" {
+  import Vue from 'vue'
+  interface RuiVueLego {
+    install: Vue.PluginFunction<{}>
+    Icon: Vue.PluginFunction<{}>
+    Dialog: Vue.PluginFunction<{}>
+    Picker: Vue.PluginFunction<{}>
+    Loading: Vue.PluginFunction<{}>,
+    $tips: (option: ToastOption) => void,
+    $toast: (option: ToastOption) => void
+  }
+  const ruiVueLego: RuiVueLego
+  export default ruiVueLego
+}

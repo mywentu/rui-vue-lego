@@ -1,6 +1,7 @@
 
 import Dialog from './dialog/index.vue';
 import Loading from './loading/Loading.vue';
+import Picker from './picker/Picker.vue'
 import Icon from './icon/Icon.vue';
 
 import $toast from './toast/index';
@@ -10,6 +11,7 @@ import $loading from './loading/index';
 const components = [
     Icon,
     Dialog,
+    Picker,
     Loading
 ];
 
@@ -29,5 +31,6 @@ export default {
     install,
     Icon,
     Dialog,
+    Picker,
     Loading
 };
