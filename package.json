@@ -2,7 +2,7 @@
   "name": "rui-vue-lego",
   "version": "1.0.1",
   "description": "A Vue.js project",
-  "author": "Cindy <zhubaiying@rong360.com>",
+  "author": "Cindy <cro_tffe@hotmail.com>",
   "private": false,
   "main": "packages/index.ts",
   "typings": "typings/lego.d.ts",
