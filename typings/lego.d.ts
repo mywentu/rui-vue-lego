@@ -1,4 +1,4 @@
-import Vue from "vue";
+import Vue, { PluginFunction } from "vue";
 
 export interface LoadingOption {
   /** 注册HMTL ID */
@@ -31,17 +31,9 @@ declare module "vue/types/vue" {
   }
 }
 
-declare module "rui-vue-lego" {
-  import Vue from 'vue'
-  interface RuiVueLego {
-    install: Vue.PluginFunction<{}>
-    Icon: Vue.PluginFunction<{}>
-    Dialog: Vue.PluginFunction<{}>
-    Picker: Vue.PluginFunction<{}>
-    Loading: Vue.PluginFunction<{}>,
-    $tips: (option: ToastOption) => void,
-    $toast: (option: ToastOption) => void
-  }
-  const ruiVueLego: RuiVueLego
-  export default ruiVueLego
-}
+
+interface RuiVueLego extends PluginFunction<any> {}
+
+
+declare const ruiVueLego: RuiVueLego;
+export default ruiVueLego;
