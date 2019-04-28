@@ -1,14 +1,16 @@
 
 import Dialog from './dialog/index.vue';
 import Loading from './loading/Loading.vue';
+import Icon from './icon/Icon.vue';
 
 import $toast from './loading/index';
 import $loading from './loading/index';
 
 
 const components = [
-  Dialog,
-  Loading
+    Icon,
+    Dialog,
+    Loading
 ];
 
 const install = function(Vue) {
@@ -25,6 +27,7 @@ if (typeof window !== 'undefined' && window['Vue']) {
 }
 export default {
     install,
+    Icon,
     Dialog,
     Loading
 };

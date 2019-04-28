@@ -1,6 +1,6 @@
 <template>
-  <div v-if="showDialog" id="dialog" class="rui-masker m-dialog">
-    <div class="rui-dialog installment-dialog">
+  <div v-if="showDialog" class="rui-masker m-lego-dialog">
+    <div class="rui-dialog">
       <header :class="{'hd' : true, 'no-border' : !title}">
           <h2 class="title" v-if="type === 'title' && title !=='' ">
             {{title}}
