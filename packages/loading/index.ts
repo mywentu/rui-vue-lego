@@ -1,18 +1,9 @@
 
 import Vue from 'vue'
 import Loading from './Loading.vue'
+import { LoadingOption } from '../../typings/lego'
 
 
-interface LoadingOption {
-  /** 注册HMTL ID */
-  id: string,
-  /** 默认10000 覆盖rui-masket的9999 */
-  zIndex: number,
-  /** 显示隐藏控制 */
-  visible: boolean,
-  /** 提示文案 */
-  tips: string
-}
 
 const defaultProps: LoadingOption = {
   id: '$loading-common-el',

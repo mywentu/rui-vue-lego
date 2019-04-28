@@ -1,18 +1,8 @@
 import Vue from 'vue'
 import Toast from './Toast.vue'
 import { whichTransitionEvent } from '../utils/index'
-export interface ToastOption {
-  /** 显示内容 */
-  msg:string,
-  /** 持续显示时间 */
-  duration?: number,
-  /** toast类型 icon txt */
-  type?: string,
-  /** 是否成功 */
-  isSuccess?: Boolean,
-  /** 关闭时回调 */
-  onClose?: Function
-}
+import { ToastOption } from '../../typings/lego'
+
 
 let timer = null
 let toastInstance = null

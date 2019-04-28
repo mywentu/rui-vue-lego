@@ -3,7 +3,7 @@ import Dialog from './dialog/index.vue';
 import Loading from './loading/Loading.vue';
 import Icon from './icon/Icon.vue';
 
-import $toast from './loading/index';
+import $toast from './toast/index';
 import $loading from './loading/index';
 
 
