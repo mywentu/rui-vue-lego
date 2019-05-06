@@ -117,6 +117,9 @@ export default {
           if(self.formatList.length < 1) {
             return false
           }
+          if(!self.change) {
+            return false
+          }
           const selectMap = this.selectedIndex;
           selectMap[index] = selectedIndex;
 
